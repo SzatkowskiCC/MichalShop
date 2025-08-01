@@ -1,0 +1,161 @@
+#######################################################################
+## Ignores using glob format (Unix style pathname pattern expansion) ##
+#######################################################################
+
+## Temporary
+SecureFiles/
+/backend/Accounting Ledger Analyzer/logs
+
+## User-specific files
+*.suo
+*.user
+*.sln.docstates
+.vs/
+*.dev.json
+*.sln.GhostDoc.xml
+
+## Build results
+debug/
+release/
+x64/
+obj/
+Output/
+FakesAssemblies/
+bin/
+/tmp
+
+## MSTest test Results
+testresult*/
+buildlog.*
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.log
+*.scc
+
+## Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.cachefile
+
+## Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+
+## IntelliJ cache files
+.idea
+
+## ReSharper Ignores
+_ReSharper*/
+*.resharper
+
+## TeamCity Ignores
+_TeamCity*
+
+## DotCover Ignores
+*.dotCover
+
+## Click-Once Ignores
+publish/
+
+## Publish Web Output
+*.Publish.xml
+*.pubxml
+
+## Windows Azure Build Ignores
+csx
+*.build.csdef
+
+## npm output
+node_modules
+package-lock.json
+
+## build output
+PublishedFiles
+git.version
+
+## Python output
+*.pyo
+*.pyc
+
+## Windows Store Ignores
+AppPackages/
+
+## RIA/Silverlight projects
+Generated_Code/
+
+## SQL Server Ignores
+App_Data/*.mdf
+App_Data/*.ldf
+
+## Backup & Report Files when converting a solution
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+*.orig
+
+## NuGet
+packages/
+
+## Choco artifacts
+choco/
+
+## Miscellaneous Ignores
+*.Cache
+*.cache
+ClientBin/
+stylecop.*
+~$*
+*~
+*.dbmdl
+*.publish.xml
+*.publishsettings
+*.resources
+*.zreproj
+*.dll*
+*.exe
+bin/Java/*.map
+
+# Backup files
+*.bak.*
+*.bak
+
+## ViaWorks DAL Unit Test ignores
+*.generated.cs
+
+
+## Windows Ignores
+$RECYCLE.BIN/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+## Xamarin components
+/Components/
+
+
+# Docker contexts
+/docker/**/ctx/**
