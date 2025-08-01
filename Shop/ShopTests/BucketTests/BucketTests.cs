@@ -167,6 +167,5 @@ public class BucketTests
 
         Assert.Equal("TestUser", bucket.LastChangedBy);
         Assert.NotEqual(dateTimeOffset, bucket.LastChangedAtUtc);
-
     }
 }
