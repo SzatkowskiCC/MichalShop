@@ -12,7 +12,17 @@ public class GetBucketQueryHandler : IQueryHandler<GetBucketQuery, GetBucketQuer
 
     public async Task<GetBucketQueryResponse> Handle(GetBucketQuery query)
     {
+        if (query.BucketId == Guid.Empty)
+        {
+            throw new ArgumentException("Invalid bucket ID.");
+        }
+
         Bucket bucket = await _bucketRepository.Get(query.BucketId);
+
+        if (bucket == null)
+        {
+            throw new KeyNotFoundException($"Bucket with ID {query.BucketId} does not exist.");
+        }
 
         await Task.CompletedTask;
 

@@ -15,6 +15,12 @@ public class GetBucketItemsStatisticsQueryHandler : IQueryHandler<GetBucketItems
     {
         IEnumerable<Bucket> buckets = await _bucketRepository.GetAll();
 
+
+        if (buckets == null)
+        {
+            throw new InvalidOperationException("Failed to retrieve buckets from the repository.");
+        }
+
         BucketItemsStaticsticsQueryResponse bucketItemsStaticsticsResponse = new BucketItemsStaticsticsQueryResponse();
 
         bucketItemsStaticsticsResponse.TotalBuckets = buckets.Count();

@@ -15,11 +15,31 @@ public class AddItemToBucketCommandHandler : ICommandHandler<AddItemToBucketComm
 
     public async Task Handle(AddItemToBucketCommand command)
     {
+        if (command.BucketId == Guid.Empty || command.ItemId == Guid.Empty)
+        {
+            throw new ArgumentException("Invalid ID: One or both of the IDs are empty.");
+        }
+
+        if (command.AddedBy == null)
+        {
+            throw new ArgumentException("The 'AddedBy' field cannot be null.");
+        }
+
         Bucket bucket = await _bucketRepository.Get(command.BucketId);
+
+        if (bucket == null)
+        {
+            throw new KeyNotFoundException($"Bucket with ID {command.BucketId} does not exist.");
+        }
+
+        var item = await _itemRepository.Get(command.ItemId);
 
         bucket.CanAddItem();
 
-        Item item = await _itemRepository.Get(command.ItemId);
+        if (item == null)
+        {
+            throw new KeyNotFoundException($"Item with ID {command.ItemId} does not exist.");
+        }
 
         bucket.AddItem(item);
 
