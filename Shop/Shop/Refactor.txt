@@ -1,0 +1,25 @@
+1. Zmiana klas bazowych
+ Items :
+ - usuniecie w³aœciwoœci "TimesUsedInBucket"
+ - zmiana typu w³aœciwoœci "Price" z int na decimal (na wypadek promocji)
+
+ Bucket:
+ - Price jako decimal 
+ - zmiana Price tak, ¿eby dynamicznie siê liczy³o  - public decimal Price => Items.Sum(entry => entry.Key.Price * entry.Value);
+ - zmiana List<Item> na Dictionary<Item, int> Items { get; init; } = new Dictionary<Item, int>();
+
+ Bucket: 
+ - zmiana typu w³aœciwoœci Items z IList<Item> na Dictionary<Item, int> - gdzie int jest liczba tego itemu w koszyku.
+ - zmiana typu w³aœciwoœci "Price" z int na decimal (na wypadek promocji)
+ - Price w przypadku bucket powinno byæ wyliczane dynamicznie na podstawie ceny i iloœci danego produktu w koszyku 
+ - public decimal Price => Items.Sum(entry => entry.Key.Price * entry.Value);
+ 
+  Imitujemy tu dzia³anie bazy danych wiêc fajnie jak by metody korzysta³y z asynchoronicznoœci nawet jeœli na tym etapie nie jest to potrzebne. 
+ mo¿na dodaæ Task.CompletedTask ¿eby nie zapomnieæ o tym lub to pomin¹æ i walczyæ z intelisensem
+
+ 2. Czas pozbyæ siê serwisu i przejœæ na CQRS: 
+ - tworzê interfejsy IQueryHandler<TQuery, TResponse> i ICommandHandlerAsync<TCommand>. - w obu dodaje odpowiednia metodê Handle
+ - tworzê nowe foldery dla metod w ShopSerive z nazwami odpowiadaj¹cymi metodom. 
+ - dodaje AddItemToBucketCommand - gdzie jest definicja parametrów zapytania
+ - dodaje AddItemToBucketCommandHandler : ICommandHandlerAsync<AddItemToBucketCommand> gdzie bêdzie logika z Shop service
+
